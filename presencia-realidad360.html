@@ -1,0 +1,1069 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presencia — Realidad 360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --border:#D7DCE2;
+  --ink:#1B222B; --ink-dim:#5C6774;
+  --accent:#C8862A; --accent-ink:#5A3B0E;
+  --oficina:#2E8B5B; --oficina-bg:#E1F3E9;
+  --jornada-full:#2E8B5B; --jornada-full-bg:#E1F3E9;
+  --jornada-media:#1E7A86; --jornada-media-bg:#DEF0F2;
+  --jornada-corta:#7A4FA6; --jornada-corta-bg:#F0E6F7;
+  --nueve:#8A6D00; --nueve-bg:#FFF3C4;
+  --partido:#5C6774; --partido-border:#8A94A1;
+  --remoto:#4C6E93; --remoto-bg:#E6EDF5;
+  --ausente:#AE4A5B; --ausente-bg:#F5E6E9;
+  --empty-border:#C3CAD2;
+  --alert:#D14343; --alert-bg:#FBE7E7;
+  --area-0:#4655B8; --area-0-bg:#E8EAFA;
+  --area-1:#A93E77; --area-1-bg:#F7E7F0;
+  --area-2:#8A6412; --area-2-bg:#F6EED7;
+  --area-3:#46606E; --area-3-bg:#E6EDF0;
+  --area-4:#B5502E; --area-4-bg:#F9E7DF;
+  --area-5:#6E7A1E; --area-5-bg:#EEF1D9;
+  --area-6:#7A3E8A; --area-6-bg:#F0E3F5;
+  --area-7:#33707A; --area-7-bg:#DFF0F1;
+  --hover:rgba(20,30,40,.04);
+  --shadow:0 12px 32px rgba(20,25,35,.16);
+  --font-display:'Big Shoulders Display','Arial Narrow',sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14171B; --surface:#1C2126; --border:#2B323A;
+    --ink:#ECEFF2; --ink-dim:#98A2AD;
+    --accent:#E7A63F; --accent-ink:#2A1C05;
+    --oficina:#55C08B; --oficina-bg:#173323;
+    --jornada-full:#55C08B; --jornada-full-bg:#173323;
+    --jornada-media:#5FC2CE; --jornada-media-bg:#0F2C30;
+    --jornada-corta:#C9A0E8; --jornada-corta-bg:#2A1E36;
+    --nueve:#F0CB4D; --nueve-bg:#3A2F0A;
+    --partido:#98A2AD; --partido-border:#4A535E;
+    --remoto:#8AAAD1; --remoto-bg:#1C2733;
+    --ausente:#DD8A97; --ausente-bg:#34191F;
+    --empty-border:#3A424C;
+    --alert:#E8615F; --alert-bg:#3A1518;
+    --area-0:#9AA8F0; --area-0-bg:#1E2340;
+    --area-1:#E792C0; --area-1-bg:#3A1930;
+    --area-2:#D9AE4C; --area-2-bg:#302507;
+    --area-3:#93B4C4; --area-3-bg:#1C282E;
+    --area-4:#E8916D; --area-4-bg:#3A2015;
+    --area-5:#B8C462; --area-5-bg:#262C0A;
+    --area-6:#C98CDA; --area-6-bg:#2C1832;
+    --area-7:#6FC4CE; --area-7-bg:#12292B;
+    --hover:rgba(255,255,255,.05);
+    --shadow:0 12px 32px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1C2126; --border:#2B323A;
+  --ink:#ECEFF2; --ink-dim:#98A2AD;
+  --accent:#E7A63F; --accent-ink:#2A1C05;
+  --oficina:#55C08B; --oficina-bg:#173323;
+  --jornada-full:#55C08B; --jornada-full-bg:#173323;
+  --jornada-media:#5FC2CE; --jornada-media-bg:#0F2C30;
+  --jornada-corta:#C9A0E8; --jornada-corta-bg:#2A1E36;
+  --nueve:#F0CB4D; --nueve-bg:#3A2F0A;
+  --partido:#98A2AD; --partido-border:#4A535E;
+  --remoto:#8AAAD1; --remoto-bg:#1C2733;
+  --ausente:#DD8A97; --ausente-bg:#34191F;
+  --empty-border:#3A424C;
+  --alert:#E8615F; --alert-bg:#3A1518;
+  --area-0:#9AA8F0; --area-0-bg:#1E2340;
+  --area-1:#E792C0; --area-1-bg:#3A1930;
+  --area-2:#D9AE4C; --area-2-bg:#302507;
+  --area-3:#93B4C4; --area-3-bg:#1C282E;
+  --area-4:#E8916D; --area-4-bg:#3A2015;
+  --area-5:#B8C462; --area-5-bg:#262C0A;
+  --area-6:#C98CDA; --area-6-bg:#2C1832;
+  --area-7:#6FC4CE; --area-7-bg:#12292B;
+  --hover:rgba(255,255,255,.05);
+  --shadow:0 12px 32px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--font-body);
+  font-size:14px; line-height:1.45; -webkit-font-smoothing:antialiased;
+}
+button,input{font-family:inherit;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.wrap{max-width:1360px;margin:0 auto;padding:28px 24px 64px;}
+
+header.top{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:flex-end;margin-bottom:16px;}
+.brand h1{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(28px,4vw,42px);
+  letter-spacing:.3px;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--ink);
+}
+.brand h1 span{color:var(--accent);}
+.brand p{margin:6px 0 0;color:var(--ink-dim);font-size:13px;max-width:52ch;}
+
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.controls input[type="search"]{
+  border:1px solid var(--border);background:var(--surface);color:var(--ink);
+  border-radius:8px;padding:8px 12px;font-size:13px;width:190px;
+}
+.controls input[type="search"]::placeholder{color:var(--ink-dim);}
+.capacity-box{
+  display:flex;align-items:center;gap:8px;background:var(--surface);
+  border:1px solid var(--border);border-radius:8px;padding:6px 12px;
+}
+.capacity-box label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim);font-weight:600;}
+.capacity-box input{
+  width:46px;border:none;background:transparent;color:var(--ink);
+  font-family:var(--font-mono);font-size:16px;text-align:center;font-variant-numeric:tabular-nums;
+}
+.save-indicator{
+  font-size:11.5px;color:var(--ink-dim);font-family:var(--font-mono);
+  min-width:96px;text-align:right;font-variant-numeric:tabular-nums;
+}
+
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 16px;font-size:12px;color:var(--ink-dim);}
+.legend span{display:inline-flex;align-items:center;}
+.legend .swatch{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px;}
+
+.banner-readonly{
+  background:var(--alert-bg);color:var(--alert);border:1px solid var(--alert);
+  border-radius:8px;padding:9px 14px;font-size:12.5px;margin-bottom:14px;
+}
+
+.grid-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface);}
+.grid{display:grid;grid-template-columns:152px 220px repeat(5, minmax(148px,1fr));min-width:1140px;}
+.headcell{
+  position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--border);
+  padding:12px 14px;z-index:2;
+}
+.headcell.corner{
+  position:sticky;top:0;z-index:3;border-right:1px solid var(--border);
+  display:flex;align-items:flex-end;font-size:11px;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--ink-dim);font-weight:600;
+}
+.headcell.corner-area{left:0;}
+.headcell.corner-name{left:152px;}
+.area-group-header{
+  grid-column:1/-1;background:var(--bg);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:7px 14px;
+  font-family:var(--font-display);font-weight:700;font-size:12.5px;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim);
+}
+.areacell{
+  position:sticky;left:0;background:var(--surface);border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:9px 10px;display:flex;
+  flex-direction:column;align-items:flex-start;gap:4px;z-index:1;
+}
+.area-pill{
+  display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:11px;
+  padding:4px 8px;border-radius:6px;font-weight:600;white-space:nowrap;cursor:pointer;
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;
+}
+.area-pill-empty{background:transparent;color:var(--ink-dim);border:1px dashed var(--empty-border);font-weight:500;}
+.area-c0{background:var(--area-0-bg);color:var(--area-0);}
+.area-c1{background:var(--area-1-bg);color:var(--area-1);}
+.area-c2{background:var(--area-2-bg);color:var(--area-2);}
+.area-c3{background:var(--area-3-bg);color:var(--area-3);}
+.area-c4{background:var(--area-4-bg);color:var(--area-4);}
+.area-c5{background:var(--area-5-bg);color:var(--area-5);}
+.area-c6{background:var(--area-6-bg);color:var(--area-6);}
+.area-c7{background:var(--area-7-bg);color:var(--area-7);}
+.area-options{display:flex;flex-direction:column;gap:5px;max-height:220px;overflow-y:auto;}
+.areaopt{
+  border:1px solid var(--border);background:var(--bg);color:var(--ink);
+  border-radius:7px;padding:7px 9px;font-size:12.5px;cursor:pointer;text-align:left;
+}
+.areaopt.active{border-color:var(--accent);background:var(--oficina-bg);font-weight:600;}
+.area-new{display:flex;gap:6px;margin-top:10px;}
+.area-new input{
+  flex:1;min-width:0;padding:7px 9px;border:1px solid var(--border);border-radius:7px;
+  background:var(--bg);color:var(--ink);font-size:12.5px;
+}
+.add-area-btn{
+  border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);
+  border-radius:7px;padding:7px 10px;font-size:12px;font-weight:600;cursor:pointer;flex:none;
+}
+.daylabel{
+  font-family:var(--font-display);font-weight:700;font-size:15px;
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.daymeta{
+  font-family:var(--font-mono);font-size:11px;color:var(--ink-dim);
+  display:flex;align-items:center;gap:5px;margin-top:3px;font-variant-numeric:tabular-nums;
+}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex:none;}
+.dot.ok{background:var(--oficina);}
+.dot.warn{background:var(--alert);}
+.spark{display:flex;align-items:flex-end;gap:1.5px;height:22px;margin-top:7px;}
+.spark i{flex:1;background:var(--oficina);opacity:.4;border-radius:1px 1px 0 0;display:block;}
+.spark i.warn{background:var(--alert);opacity:.85;}
+
+.namecell{
+  position:sticky;left:152px;background:var(--surface);border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:9px 14px;display:flex;
+  align-items:flex-start;justify-content:space-between;gap:6px;z-index:1;
+}
+.namecell .name{
+  font-size:13.5px;font-weight:500;cursor:text;border-radius:4px;padding:2px 4px;margin:-2px -4px;
+  flex:1;min-width:0;white-space:normal;overflow-wrap:break-word;line-height:1.35;
+}
+.namecell .name:hover{background:var(--hover);}
+.namecell .name-edit{
+  font-size:13.5px;font-weight:500;font-family:inherit;border:1px solid var(--accent);
+  border-radius:4px;padding:2px 4px;background:var(--bg);color:var(--ink);width:100%;
+}
+.project-tag{
+  font-family:var(--font-mono);font-size:11px;padding:3px 8px;border-radius:5px;
+  border:1px solid var(--accent);color:var(--accent);white-space:nowrap;cursor:pointer;
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;display:inline-block;
+}
+.project-tag.empty{opacity:0;border:1px dashed var(--empty-border);color:var(--ink-dim);}
+.areacell:hover .project-tag.empty,.project-tag.empty:focus-visible{opacity:1;}
+.namecell .rm{
+  opacity:0;border:none;background:none;color:var(--ink-dim);cursor:pointer;
+  font-size:12px;padding:3px 6px;border-radius:5px;line-height:1;flex:none;align-self:flex-start;
+}
+.namecell:hover .rm,.namecell .rm:focus-visible{opacity:1;}
+.namecell .rm:hover{background:var(--ausente-bg);color:var(--ausente);}
+
+.daycell{
+  border-bottom:1px solid var(--border);border-right:1px solid var(--border);
+  padding:9px 10px;display:flex;align-items:center;cursor:pointer;min-height:44px;
+}
+.daycell:hover{background:var(--hover);}
+
+.pill{
+  display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);
+  font-size:12.5px;font-variant-numeric:tabular-nums;padding:5px 9px;
+  border-radius:7px;font-weight:500;line-height:1;white-space:nowrap;
+}
+.pill-oficina-full{background:var(--jornada-full-bg);color:var(--jornada-full);}
+.pill-oficina-half{background:var(--jornada-media-bg);color:var(--jornada-media);}
+.pill-oficina-short{background:var(--jornada-corta-bg);color:var(--jornada-corta);}
+.pill-oficina-nine{background:var(--nueve-bg);color:var(--nueve);}
+.pill-oficina-split{background:transparent;color:var(--partido);border:1px dashed var(--partido-border);}
+.pill-remoto{background:var(--remoto-bg);color:var(--remoto);}
+.pill-remoto-empty{background:transparent;border:1px dashed var(--remoto);}
+.pill-ausente{background:var(--ausente-bg);color:var(--ausente);border:1px dashed var(--ausente);}
+.pill-empty{background:transparent;color:var(--ink-dim);border:1px dashed var(--empty-border);}
+.daycell:hover .pill-empty{color:var(--accent);border-color:var(--accent);}
+
+.addrow{grid-column:1/-1;padding:12px 14px;display:flex;gap:8px;align-items:center;}
+.addrow input{
+  flex:0 0 260px;max-width:60vw;padding:8px 12px;border:1px solid var(--border);
+  border-radius:8px;background:var(--bg);color:var(--ink);font-size:13px;
+}
+.addrow button{
+  border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);
+  border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;
+}
+.addrow button:hover{filter:brightness(1.06);}
+.empty-msg{padding:18px 14px;color:var(--ink-dim);font-size:13px;}
+
+.footnote{margin-top:18px;font-size:11.5px;color:var(--ink-dim);max-width:76ch;line-height:1.6;}
+.footnote strong{color:var(--ink);}
+
+#editor-popover{
+  position:fixed;z-index:60;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;box-shadow:var(--shadow);padding:14px;width:266px;display:none;
+}
+#editor-popover.open{display:block;}
+.pophead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:10px;}
+.pophead strong{font-size:13px;}
+.pophead span{font-size:11px;color:var(--ink-dim);font-family:var(--font-mono);text-transform:uppercase;}
+.typebtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.typebtns button{
+  border:1px solid var(--border);background:var(--bg);color:var(--ink);
+  border-radius:7px;padding:7px 6px;font-size:12px;cursor:pointer;
+}
+.typebtns button.active.type-oficina{background:var(--oficina-bg);border-color:var(--oficina);color:var(--oficina);}
+.typebtns button.active.type-remoto{background:var(--remoto-bg);border-color:var(--remoto);color:var(--remoto);}
+.typebtns button.active.type-ausente{background:var(--ausente-bg);border-color:var(--ausente);color:var(--ausente);}
+.typebtns button.active.type-sin_definir{border-color:var(--ink-dim);}
+.blocks{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+.block-row{display:flex;gap:6px;align-items:flex-end;}
+.block-row .hours{display:flex;gap:6px;margin-top:0;flex:1;}
+.hours{display:flex;gap:8px;margin-top:10px;}
+.hours label{flex:1;font-size:10.5px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.05em;}
+.hours select{
+  width:100%;margin-top:3px;padding:6px;border:1px solid var(--border);border-radius:6px;
+  background:var(--bg);color:var(--ink);font-family:var(--font-mono);font-size:13px;
+}
+.blk-rm{
+  border:1px solid var(--border);background:var(--bg);color:var(--ink-dim);
+  border-radius:6px;width:26px;height:30px;flex:none;cursor:pointer;font-size:12px;
+}
+.blk-rm:hover{background:var(--ausente-bg);color:var(--ausente);border-color:var(--ausente);}
+.add-block{
+  border:1px dashed var(--border);background:transparent;color:var(--ink-dim);
+  border-radius:7px;padding:6px;font-size:11.5px;cursor:pointer;width:100%;
+}
+.add-block:hover{color:var(--accent);border-color:var(--accent);}
+.popactions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;}
+.popactions button{border-radius:7px;padding:7px 12px;font-size:12.5px;cursor:pointer;border:1px solid transparent;}
+.popactions .ghost{background:transparent;border-color:var(--border);color:var(--ink-dim);}
+.popactions .primary{background:var(--accent);color:var(--accent-ink);font-weight:600;}
+
+.toast{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);
+  background:var(--ink);color:var(--bg);border-radius:10px;padding:10px 14px;
+  display:flex;align-items:center;gap:12px;font-size:12.5px;opacity:0;pointer-events:none;
+  box-shadow:var(--shadow);z-index:70;
+}
+@media (prefers-reduced-motion: no-preference){
+  .toast{transition:opacity .18s ease, transform .18s ease;}
+}
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto;}
+.toast button{
+  background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;font-size:12.5px;
+  padding:0;
+}
+
+@media (max-width: 720px){
+  .grid{grid-template-columns:118px 170px repeat(5, minmax(128px,1fr));}
+  .headcell.corner-name{left:118px;}
+  .namecell{left:118px;}
+  .brand p{max-width:100%;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<div class="brand">
+<h1>Presencia <span>&middot;</span> Realidad 360</h1>
+<p>Quién viene a la oficina, qué día de la semana y en qué horario. Horario semanal tipo: se repite todas las semanas, no son fechas puntuales.</p>
+</div>
+<div class="controls">
+<input type="search" id="search-input" placeholder="Buscar persona…" autocomplete="off">
+<div class="capacity-box" title="Máquinas disponibles en la oficina">
+<label for="machines-input">PCs</label>
+<input type="number" id="machines-input" min="0" max="200" value="18">
+</div>
+<span class="save-indicator" id="save-indicator">Guardado</span>
+</div>
+</header>
+<div class="legend">
+<span><i class="swatch" style="background:var(--jornada-full)"></i>Jornada completa (7-8h corridas)</span>
+<span><i class="swatch" style="background:var(--jornada-media)"></i>Media jornada (4-6h corridas)</span>
+<span><i class="swatch" style="background:var(--jornada-corta)"></i>Jornada corta (&lt;4h)</span>
+<span><i class="swatch" style="background:var(--nueve)"></i>Entra a las 9:00</span>
+<span><i class="swatch" style="background:transparent;border:1px dashed var(--partido-border)"></i>Horario partido</span>
+<span><i class="swatch" style="background:var(--remoto)"></i>Remoto</span>
+<span><i class="swatch" style="background:var(--ausente)"></i>Ausente / vacaciones</span>
+<span><i class="swatch" style="background:transparent;border:1px dashed var(--empty-border)"></i>Sin definir</span>
+</div>
+<div class="grid-wrap"><div id="app"></div></div>
+<p class="footnote">Datos iniciales importados desde <strong>ORGANIZACIÓN PERSONAL PC.xlsx</strong> (hoja "Por persona", semana de referencia). Es un horario semanal <strong>tipo</strong>: se repite todas las semanas, no representa fechas puntuales. Los códigos "V"/"P" de la planilla original no se conservaron — se tomaron directamente los horarios marcados como presencia en oficina; revisá y corregí tu fila si hace falta. Capacidad de PCs inicial (18) tomada de la hoja "PCs" del mismo archivo — ajustala si cambió. Cada persona puede agregar o editar su propio horario tocando su celda, y cargar más de una franja horaria si hace horario partido (mañana y tarde). <strong>Todos deben cargar su horario de trabajo</strong>, tanto si es presencial como remoto — un cartel "Remoto" sin horario indica que todavía falta completarlo. Tocá la etiqueta de Área para asignar el equipo de cada persona o crear una nueva área; tocá el nombre para editarlo. Los cambios se guardan para todo el equipo.</p>
+</div>
+<div id="editor-popover" class="pop"></div>
+<div id="toast" class="toast"></div>
+<script type="application/json" id="state-data">{"machines": 18, "updatedAt": null, "people": [{"name": "Alan Ares", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 19}]}, "Martes": {"type": "oficina", "blocks": [{"start": 13, "end": 19}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 19}]}, "Viernes": null}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Alejandro Encinas", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 13, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 13, "end": 17}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 13, "end": 17}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 13, "end": 17}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 13, "end": 17}]}}, "area": "3D", "project": "Mafalda 3D, Tiflo"}, {"name": "Alejandro Rojas", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 13, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 13}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 12}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 14}]}}, "area": null, "project": "Tiflo"}, {"name": "Azul Laranga", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Cesar Barrangou", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Charly Gomez Castagnola", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": null, "project": "Mafalda 3D, Mafalda 2D, Tiflo"}, {"name": "Eduardo Labollita", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": null}, {"name": "Emiliano Doval", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 18, "end": 20}]}, "Martes": {"type": "oficina", "blocks": [{"start": 18, "end": 20}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 18, "end": 20}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 18, "end": 20}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 18, "end": 20}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Facundo Pippia", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Flor Palet", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 11, "end": 20}]}, "Martes": {"type": "oficina", "blocks": [{"start": 11, "end": 20}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 11, "end": 20}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 11, "end": 20}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 11, "end": 20}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Francisco Matellan", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 13}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 13}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}}, "area": "3D", "project": "Mafalda 3D, Tiflo"}, {"name": "Gabriel Krausz", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "3D", "project": "Mafalda 3D"}, {"name": "Gaston Carballal", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 17}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 9, "end": 17}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 9, "end": 17}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 9, "end": 17}]}}, "area": "3D", "project": "Mafalda 3D, Tiflo"}, {"name": "Hernan Fernandez", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 21}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 14, "end": 21}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 15, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 9, "end": 19}]}}, "area": "3D", "project": "Mafalda 3D"}, {"name": "Jarri Ovelar", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 17}]}}, "area": "3D", "project": "Mafalda 3D"}, {"name": "Juan Ferro", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 21}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 21}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 19, "end": 21}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 14, "end": 20}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 14, "end": 21}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Juan Sergio Laguens", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "3D", "project": "Mafalda 3D"}, {"name": "Julieta Echeverria", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 14, "end": 21}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 21}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 17, "end": 21}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 9, "end": 16}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 16, "end": 21}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Katherine Fretes", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 16}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 11, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 9, "end": 16}]}, "Viernes": null}, "area": "Producción", "project": "Tiflo"}, {"name": "Lucho Cabrera", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": "Tiflo"}, {"name": "Lucia Criscuolo", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 14, "end": 19}]}, "Martes": {"type": "oficina", "blocks": [{"start": 14, "end": 19}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 14, "end": 19}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 14, "end": 19}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 14, "end": 19}]}}, "area": null, "project": "Mafalda 3D, Tiflo, Mafalda 2D"}, {"name": "Luciano Fernandez", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Lucio Anselmi", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}}, "area": "3D", "project": "Mafalda 3D, Tiflo"}, {"name": "Magali Rostanzo", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Manuela Alberti", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 8, "end": 19}]}, "Martes": {"type": "oficina", "blocks": [{"start": 8, "end": 21}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 8, "end": 19}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 8, "end": 21}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 14, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D, Tiflo"}, {"name": "Mariano Marquez", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 19}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 19}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 8, "end": 21}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 8, "end": 16}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Martina Acurso Bettiolo", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Mathias Maciel", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D, Tiflo"}, {"name": "Gabriel De La Cruz", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "3D", "project": "Mafalda 3D, Tiflo"}, {"name": "Ignacio Peralta", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "3D", "project": "Mafalda 3D, Tiflo"}, {"name": "Matias Martinez Coronado", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 9, "end": 19}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 9, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 9, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Micaela Di Pompo", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 8, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "Producción", "project": "Mafalda 2D, Mafalda 3D, Tiflo"}, {"name": "Nicolas Galaz", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9, "end": 15}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 15}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 9, "end": 15}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 9, "end": 15}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 9, "end": 15}]}}, "area": null, "project": "Tiflo"}, {"name": "Martin Douglas", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": null}, {"name": "Renata", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": null}, {"name": "Ayelen", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": null}, {"name": "Tomas", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": null}, {"name": "Eva", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "Producción", "project": null}, {"name": "Alejandra", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 9.5, "end": 13.5}]}, "Martes": {"type": "oficina", "blocks": [{"start": 9, "end": 13}]}, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "Producción", "project": null}, {"name": "Valentino", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 12, "end": 18}]}, "Martes": null, "Miercoles": {"type": "oficina", "blocks": [{"start": 13, "end": 19}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 13, "end": 19}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 13, "end": 19}]}}, "area": null, "project": null}, {"name": "Nicolas Matrella", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "2D", "project": "Mafalda 2D"}, {"name": "Octavio Elia", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": "3D", "project": "Mafalda 3D"}, {"name": "Valentin Svevo", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Martes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 10, "end": 18}]}}, "area": null, "project": null}, {"name": "Pablo Fernandez", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": "3D", "project": "Mafalda 3D"}, {"name": "Pilar Slullitel", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": "Mafalda"}, {"name": "Silena Delgado", "schedule": {"Lunes": null, "Martes": null, "Miercoles": null, "Jueves": null, "Viernes": null}, "area": null, "project": "Tiflo"}, {"name": "Sofía Rubio Ly", "schedule": {"Lunes": {"type": "oficina", "blocks": [{"start": 11, "end": 17}]}, "Martes": {"type": "oficina", "blocks": [{"start": 11, "end": 17}]}, "Miercoles": {"type": "oficina", "blocks": [{"start": 11, "end": 17}]}, "Jueves": {"type": "oficina", "blocks": [{"start": 11, "end": 17}]}, "Viernes": {"type": "oficina", "blocks": [{"start": 11, "end": 17}]}}, "area": null, "project": "Tiflo"}], "areas": ["Producción", "2D", "3D"], "projects": ["Mafalda", "Tiflo"]}</script>
+<script id="app-source">
+'use strict';
+var SELF_JS_TEXT = document.currentScript ? document.currentScript.textContent : '';
+var DAYS = ['Lunes','Martes','Miercoles','Jueves','Viernes'];
+var DAY_LABELS = {Lunes:'Lunes',Martes:'Martes',Miercoles:'Miércoles',Jueves:'Jueves',Viernes:'Viernes'};
+var HOUR_MIN = 7, HOUR_MAX = 22;
+
+var STATE = JSON.parse(document.getElementById('state-data').textContent);
+STATE.people.forEach(function(p, i){
+  if(!p.id){ p.id = slugify(p.name) + '-' + i; }
+  if(p.area === undefined){ p.area = null; }
+  if(p.project === undefined){ p.project = null; }
+  DAYS.forEach(function(d){
+    var s = p.schedule[d];
+    if(s && s.type === 'oficina' && !s.blocks){
+      s.blocks = [{start: s.start, end: s.end}];
+      delete s.start; delete s.end;
+    }
+  });
+});
+if(typeof STATE.machines !== 'number'){ STATE.machines = 0; }
+if(!Array.isArray(STATE.areas)){ STATE.areas = []; }
+if(!Array.isArray(STATE.projects)){ STATE.projects = []; }
+STATE.people.forEach(function(p){
+  if(p.area && STATE.areas.indexOf(p.area) === -1){ STATE.areas.push(p.area); }
+  if(p.project && STATE.projects.indexOf(p.project) === -1){ STATE.projects.push(p.project); }
+});
+
+var readOnly = false;
+var artifactApi = null;
+var searchTerm = '';
+var saveTimer = null;
+var lastRemoved = null;
+var toastTimer = null;
+var editingId = null, editingDay = null, editingKind = null, curType = null, curBlocks = [{start: 10, end: 18}];
+
+function slugify(name){
+  return String(name).toLowerCase().normalize('NFD').replace(/[^\x00-\x7F]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/(^-+|-+$)/g,'') || 'persona';
+}
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
+function labelFor(t){
+  return {oficina:'Oficina', remoto:'Remoto', ausente:'Ausente', sin_definir:'Sin definir'}[t];
+}
+
+function officeBucket(blocks){
+  if(!blocks || blocks.length !== 1){ return 'split'; }
+  var b = blocks[0];
+  if(b.start === 9){ return 'nine'; }
+  var dur = b.end - b.start;
+  if(dur >= 7){ return 'full'; }
+  if(dur >= 4){ return 'half'; }
+  return 'short';
+}
+
+function formatTime(t){
+  var h = Math.floor(t);
+  var m = Math.round((t - h) * 60);
+  return h + ':' + (m < 10 ? '0' + m : m);
+}
+
+function formatBlocks(blocks){
+  return blocks.map(function(b){ return formatTime(b.start) + '–' + formatTime(b.end); }).join(' / ') + ' hs';
+}
+
+function hourOptions(selected){
+  var out = '';
+  for(var q = HOUR_MIN * 4; q <= HOUR_MAX * 4; q++){
+    var t = q / 4;
+    out += '<option value="' + t + '"' + (t === selected ? ' selected' : '') + '>' + formatTime(t) + '</option>';
+  }
+  return out;
+}
+
+function computeDayStats(state){
+  var hours = [];
+  for(var h = HOUR_MIN; h < HOUR_MAX; h++){ hours.push(h); }
+  var result = {};
+  DAYS.forEach(function(d){
+    var perHour = hours.map(function(h){
+      return state.people.filter(function(p){
+        var s = p.schedule[d];
+        if(!s || s.type !== 'oficina' || !s.blocks){ return false; }
+        return s.blocks.some(function(b){ return b.start < h + 1 && h < b.end; });
+      }).length;
+    });
+    var total = state.people.filter(function(p){
+      var s = p.schedule[d];
+      return s && s.type === 'oficina';
+    }).length;
+    var peak = perHour.length ? Math.max.apply(null, perHour) : 0;
+    result[d] = {hours: perHour, peak: peak, total: total};
+  });
+  return result;
+}
+
+function dayHeaderCell(d, stat, machines){
+  var over = machines > 0 && stat.peak > machines;
+  var scale = Math.max(machines, stat.peak, 1);
+  var bars = stat.hours.map(function(c){
+    var frac = c / scale;
+    var cls = (machines > 0 && c > machines) ? ' class="warn"' : '';
+    var h = Math.max(3, Math.round(frac * 22));
+    return '<i' + cls + ' style="height:' + h + 'px"></i>';
+  }).join('');
+  var machinesTxt = machines > 0 ? ('/' + machines + ' PCs') : '';
+  return '<div class="headcell"><div class="daylabel">' + DAY_LABELS[d] + '</div>'
+    + '<div class="daymeta"><span class="dot ' + (over ? 'warn' : 'ok') + '"></span>'
+    + stat.total + ' en oficina · pico ' + stat.peak + machinesTxt + '</div>'
+    + '<div class="spark">' + bars + '</div></div>';
+}
+
+function areaColorClass(area){
+  var h = 0;
+  for(var i = 0; i < area.length; i++){ h = (h * 31 + area.charCodeAt(i)) >>> 0; }
+  return 'area-c' + (h % 8);
+}
+
+function areaCell(p, ro){
+  var label = p.area || 'Sin área';
+  var cls = p.area ? ('area-pill ' + areaColorClass(p.area)) : 'area-pill area-pill-empty';
+  var areaAttrs = ro ? '' : (' data-action="open-area" data-popover-trigger="1" data-id="' + p.id + '"');
+  var areaHtml = '<span class="' + cls + '"' + areaAttrs + '>' + esc(label) + '</span>';
+  return '<div class="areacell">' + areaHtml + projectTag(p, ro) + '</div>';
+}
+
+function projectTag(p, ro){
+  if(p.project){
+    var attrs = ro ? '' : (' data-action="open-project" data-popover-trigger="1" data-id="' + p.id + '"');
+    return '<span class="project-tag"' + attrs + ' title="Proyecto: ' + esc(p.project) + '">' + esc(p.project) + '</span>';
+  }
+  if(ro){ return ''; }
+  return '<span class="project-tag empty" data-action="open-project" data-popover-trigger="1" data-id="' + p.id + '" title="Asignar proyecto">+ proyecto</span>';
+}
+
+function areaSortIndex(area){
+  if(!area){ return STATE.areas.length; }
+  var idx = STATE.areas.indexOf(area);
+  return idx === -1 ? STATE.areas.length : idx;
+}
+
+function dayCell(p, d, ro){
+  var s = p.schedule[d];
+  var inner;
+  if(!s){
+    inner = '<span class="pill pill-empty">' + (ro ? 'Sin definir' : '+ Definir') + '</span>';
+  } else if(s.type === 'oficina'){
+    inner = '<span class="pill pill-oficina-' + officeBucket(s.blocks) + '">' + formatBlocks(s.blocks) + '</span>';
+  } else if(s.type === 'remoto'){
+    if(s.blocks && s.blocks.length){
+      inner = '<span class="pill pill-remoto">Remoto · ' + formatBlocks(s.blocks) + '</span>';
+    } else {
+      inner = '<span class="pill pill-remoto pill-remoto-empty">Remoto' + (ro ? '' : ' · + horario') + '</span>';
+    }
+  } else {
+    inner = '<span class="pill pill-ausente">Ausente</span>';
+  }
+  var attrs = ro ? '' : (' data-action="open" data-popover-trigger="1" data-id="' + p.id + '" data-day="' + d + '"');
+  return '<div class="daycell"' + attrs + '>' + inner + '</div>';
+}
+
+function renderGrid(state, opts){
+  opts = opts || {};
+  var ro = !!opts.readOnly;
+  var term = (opts.searchTerm || '').toLowerCase();
+  var stats = computeDayStats(state);
+  var people = state.people.slice().sort(function(a, b){
+    var ai = areaSortIndex(a.area), bi = areaSortIndex(b.area);
+    if(ai !== bi){ return ai - bi; }
+    return a.name.localeCompare(b.name, 'es', {sensitivity: 'base'});
+  });
+  if(term){
+    people = people.filter(function(p){ return p.name.toLowerCase().indexOf(term) > -1; });
+  }
+  var html = '<div class="grid">';
+  html += '<div class="headcell corner corner-area">Área</div>';
+  html += '<div class="headcell corner corner-name">Persona</div>';
+  DAYS.forEach(function(d){ html += dayHeaderCell(d, stats[d], state.machines); });
+  var lastArea;
+  var hasGroup = false;
+  people.forEach(function(p){
+    if(!hasGroup || p.area !== lastArea){
+      hasGroup = true;
+      lastArea = p.area;
+      var label = p.area || 'Sin área';
+      var count = people.filter(function(x){ return x.area === p.area; }).length;
+      html += '<div class="area-group-header">' + esc(label) + ' · ' + count + '</div>';
+    }
+    html += areaCell(p, ro);
+    html += '<div class="namecell"><span class="name"' + (ro ? '' : ' data-action="rename" data-id="' + p.id + '"') + '>' + esc(p.name) + '</span>'
+      + (ro ? '' : '<button type="button" class="rm" data-action="remove" data-id="' + p.id + '" title="Quitar de la lista">✕</button>')
+      + '</div>';
+    DAYS.forEach(function(d){ html += dayCell(p, d, ro); });
+  });
+  html += '</div>';
+  if(!ro){
+    html += '<form class="addrow" data-action="add-form"><input type="text" name="newname" placeholder="Agregar a alguien del equipo…" maxlength="60" autocomplete="off" required><button type="submit">+ Agregar</button></form>';
+  }
+  if(people.length === 0){
+    html += '<p class="empty-msg">Nadie coincide con &quot;' + esc(opts.searchTerm || '') + '&quot;.</p>';
+  }
+  return html;
+}
+
+function renderHeader(state, ro){
+  return ''
+    + '<div class="brand"><h1>Presencia <span>&middot;</span> Realidad 360</h1>'
+    + '<p>Quién viene a la oficina, qué día de la semana y en qué horario. Horario semanal tipo: se repite todas las semanas, no son fechas puntuales.</p></div>'
+    + '<div class="controls">'
+    + '<input type="search" id="search-input" placeholder="Buscar persona…" autocomplete="off"' + (ro ? ' disabled' : '') + '>'
+    + '<div class="capacity-box" title="Máquinas disponibles en la oficina"><label for="machines-input">PCs</label>'
+    + '<input type="number" id="machines-input" min="0" max="200" value="' + state.machines + '"' + (ro ? ' disabled' : '') + '></div>'
+    + '<span class="save-indicator" id="save-indicator">' + (ro ? 'Solo lectura' : 'Guardado') + '</span>'
+    + '</div>';
+}
+
+function renderLegend(){
+  return '<div class="legend">'
+    + '<span><i class="swatch" style="background:var(--jornada-full)"></i>Jornada completa (7-8h corridas)</span>'
+    + '<span><i class="swatch" style="background:var(--jornada-media)"></i>Media jornada (4-6h corridas)</span>'
+    + '<span><i class="swatch" style="background:var(--jornada-corta)"></i>Jornada corta (&lt;4h)</span>'
+    + '<span><i class="swatch" style="background:var(--nueve)"></i>Entra a las 9:00</span>'
+    + '<span><i class="swatch" style="background:transparent;border:1px dashed var(--partido-border)"></i>Horario partido</span>'
+    + '<span><i class="swatch" style="background:var(--remoto)"></i>Remoto</span>'
+    + '<span><i class="swatch" style="background:var(--ausente)"></i>Ausente / vacaciones</span>'
+    + '<span><i class="swatch" style="background:transparent;border:1px dashed var(--empty-border)"></i>Sin definir</span>'
+    + '</div>';
+}
+
+function renderBanner(ro){
+  return ro ? '<div class="banner-readonly">Estás viendo una versión de solo lectura de este calendario.</div>' : '';
+}
+
+function renderFooter(){
+  return '<p class="footnote">Datos iniciales importados desde <strong>ORGANIZACIÓN PERSONAL PC.xlsx</strong> (hoja &quot;Por persona&quot;, semana de referencia). Es un horario semanal <strong>tipo</strong>: se repite todas las semanas, no representa fechas puntuales. Los códigos &quot;V&quot;/&quot;P&quot; de la planilla original no se conservaron — se tomaron directamente los horarios marcados como presencia en oficina; revisá y corregí tu fila si hace falta. Capacidad de PCs inicial (18) tomada de la hoja &quot;PCs&quot; del mismo archivo — ajustala si cambió. Cada persona puede agregar o editar su propio horario tocando su celda, y cargar más de una franja horaria si hace horario partido (mañana y tarde). <strong>Todos deben cargar su horario de trabajo</strong>, tanto si es presencial como remoto — un cartel "Remoto" sin horario indica que todavía falta completarlo. Tocá la etiqueta de Área para asignar el equipo de cada persona o crear una nueva área; tocá el nombre para editarlo. Los cambios se guardan para todo el equipo.</p>';
+}
+
+function renderBody(state, opts){
+  opts = opts || {};
+  var ro = !!opts.readOnly;
+  return '<div class="wrap">'
+    + '<header class="top">' + renderHeader(state, ro) + '</header>'
+    + renderLegend()
+    + renderBanner(ro)
+    + '<div class="grid-wrap"><div id="app">' + renderGrid(state, {readOnly: ro, searchTerm: opts.searchTerm || ''}) + '</div></div>'
+    + renderFooter()
+    + '</div>'
+    + '<div id="editor-popover" class="pop"></div>'
+    + '<div id="toast" class="toast"></div>';
+}
+
+function pageHtml(state){
+  var headHtml = ''
+    + '<meta charset="utf-8">'
+    + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+    + '<title>Presencia — Realidad 360</title>'
+    + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    + '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">'
+    + '<style>' + document.querySelector('style').textContent + '</style>';
+  var stateJson = JSON.stringify(state).replace(/</g, '\\u003c');
+  var body = renderBody(state, {readOnly: false, searchTerm: ''})
+    + '<script type="application/json" id="state-data">' + stateJson + '<' + '/script>'
+    + '<script id="app-source">' + SELF_JS_TEXT + '<' + '/script>';
+  return '<!doctype html>\n<html lang="es">\n<head>' + headHtml + '</head>\n<body>' + body + '</body>\n</html>';
+}
+
+function render(){
+  var host = document.getElementById('app');
+  if(host){ host.innerHTML = renderGrid(STATE, {readOnly: readOnly, searchTerm: searchTerm}); }
+}
+
+function updateSaveIndicator(text){
+  var el = document.getElementById('save-indicator');
+  if(el){ el.textContent = text; }
+}
+
+function applyReadOnly(){
+  readOnly = true;
+  var s = document.getElementById('search-input'); if(s){ s.disabled = true; }
+  var m = document.getElementById('machines-input'); if(m){ m.disabled = true; }
+  if(!document.querySelector('.banner-readonly')){
+    var host = document.querySelector('.legend');
+    if(host){ host.insertAdjacentHTML('afterend', renderBanner(true)); }
+  }
+  updateSaveIndicator('Solo lectura');
+  render();
+}
+
+function scheduleSave(){
+  if(readOnly){ return; }
+  updateSaveIndicator('Editando…');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(doSave, 900);
+}
+
+function doSave(){
+  if(readOnly || !artifactApi){ return; }
+  STATE.updatedAt = new Date().toISOString();
+  updateSaveIndicator('Guardando…');
+  var html = pageHtml(STATE);
+  artifactApi.publish(html).then(function(){
+    updateSaveIndicator('Guardado · ' + new Date().toLocaleTimeString('es-AR', {hour: '2-digit', minute: '2-digit'}));
+  }).catch(function(err){
+    var code = err && err.code;
+    if(code === 'conflict'){ return; }
+    if(code === 'not_writer' || code === 'not_granted' || code === 'not_declared' || code === 'capability_disabled' || code === 'capability_removed' || code === 'consent_required'){
+      applyReadOnly();
+      return;
+    }
+    updateSaveIndicator('No se pudo guardar');
+    console.error('publish failed', err);
+  });
+}
+
+function findPerson(id){
+  var out = null;
+  STATE.people.forEach(function(p){ if(p.id === id){ out = p; } });
+  return out;
+}
+
+function blockRow(b, idx, removable){
+  return '<div class="block-row" data-idx="' + idx + '">'
+    + '<div class="hours">'
+    + '<label>De<select class="blk-start" data-idx="' + idx + '">' + hourOptions(b.start) + '</select></label>'
+    + '<label>A<select class="blk-end" data-idx="' + idx + '">' + hourOptions(b.end) + '</select></label>'
+    + '</div>'
+    + (removable ? '<button type="button" class="blk-rm" data-action="remove-block" data-idx="' + idx + '" title="Quitar franja">✕</button>' : '')
+    + '</div>';
+}
+
+function popoverBody(p){
+  var types = ['oficina', 'remoto', 'ausente', 'sin_definir'];
+  var btns = types.map(function(t){
+    return '<button type="button" class="typebtn' + (curType === t ? ' active type-' + t : '') + '" data-type="' + t + '">' + labelFor(t) + '</button>';
+  }).join('');
+  var blocksHtml = '';
+  if(curType === 'oficina' || curType === 'remoto'){
+    blocksHtml = '<div class="blocks">'
+      + curBlocks.map(function(b, idx){ return blockRow(b, idx, curBlocks.length > 1); }).join('')
+      + '<button type="button" class="add-block" data-action="add-block">+ Agregar franja (horario partido)</button>'
+      + '</div>';
+  }
+  return '<div class="pophead"><strong>' + esc(p.name) + '</strong><span>' + DAY_LABELS[editingDay] + '</span></div>'
+    + '<div class="typebtns">' + btns + '</div>'
+    + blocksHtml
+    + '<div class="popactions"><button type="button" class="ghost" data-action="pop-cancel">Cancelar</button><button type="button" class="primary" data-action="pop-save">Guardar</button></div>';
+}
+
+function positionPopover(pop, rect){
+  pop.style.left = '0px'; pop.style.top = '0px';
+  var w = pop.offsetWidth, h = pop.offsetHeight;
+  var left = Math.min(rect.left, window.innerWidth - w - 12);
+  left = Math.max(12, left);
+  var top = rect.bottom + 8;
+  if(top + h > window.innerHeight - 12){ top = rect.top - h - 8; }
+  if(top < 12){ top = 12; }
+  pop.style.left = left + 'px';
+  pop.style.top = top + 'px';
+}
+
+function areaPopoverBody(p){
+  var noneBtn = '<button type="button" class="areaopt' + (!p.area ? ' active' : '') + '" data-area="">Sin área</button>';
+  var opts = STATE.areas.map(function(a){
+    return '<button type="button" class="areaopt' + (p.area === a ? ' active' : '') + '" data-area="' + esc(a) + '">' + esc(a) + '</button>';
+  }).join('');
+  return '<div class="pophead"><strong>' + esc(p.name) + '</strong><span>Área</span></div>'
+    + '<div class="area-options">' + noneBtn + opts + '</div>'
+    + '<div class="area-new"><input type="text" id="new-area-input" placeholder="Nueva área…" maxlength="40" autocomplete="off"><button type="button" class="add-area-btn" data-action="add-area">+ Crear</button></div>'
+    + '<div class="popactions"><button type="button" class="ghost" data-action="pop-cancel">Cerrar</button></div>';
+}
+
+function setPersonArea(id, area){
+  var p = findPerson(id); if(!p){ return; }
+  p.area = area || null;
+  render();
+  scheduleSave();
+}
+
+function openAreaEditor(id, anchorEl){
+  if(readOnly){ return; }
+  var p = findPerson(id); if(!p){ return; }
+  editingKind = 'area';
+  editingId = id; editingDay = null;
+  var pop = document.getElementById('editor-popover');
+  pop.innerHTML = areaPopoverBody(p);
+  pop.classList.add('open');
+  positionPopover(pop, anchorEl.getBoundingClientRect());
+}
+
+function projectPopoverBody(p){
+  var noneBtn = '<button type="button" class="areaopt' + (!p.project ? ' active' : '') + '" data-project="">Sin proyecto</button>';
+  var opts = STATE.projects.map(function(pr){
+    return '<button type="button" class="areaopt' + (p.project === pr ? ' active' : '') + '" data-project="' + esc(pr) + '">' + esc(pr) + '</button>';
+  }).join('');
+  return '<div class="pophead"><strong>' + esc(p.name) + '</strong><span>Proyecto</span></div>'
+    + '<div class="area-options">' + noneBtn + opts + '</div>'
+    + '<div class="area-new"><input type="text" id="new-project-input" placeholder="Nuevo proyecto…" maxlength="40" autocomplete="off"><button type="button" class="add-area-btn" data-action="add-project">+ Crear</button></div>'
+    + '<div class="popactions"><button type="button" class="ghost" data-action="pop-cancel">Cerrar</button></div>';
+}
+
+function setPersonProject(id, project){
+  var p = findPerson(id); if(!p){ return; }
+  p.project = project || null;
+  render();
+  scheduleSave();
+}
+
+function openProjectEditor(id, anchorEl){
+  if(readOnly){ return; }
+  var p = findPerson(id); if(!p){ return; }
+  editingKind = 'project';
+  editingId = id; editingDay = null;
+  var pop = document.getElementById('editor-popover');
+  pop.innerHTML = projectPopoverBody(p);
+  pop.classList.add('open');
+  positionPopover(pop, anchorEl.getBoundingClientRect());
+}
+
+function openEditor(id, day, anchorEl){
+  if(readOnly){ return; }
+  var p = findPerson(id); if(!p){ return; }
+  editingKind = 'schedule';
+  editingId = id; editingDay = day;
+  var s = p.schedule[day];
+  curType = s ? s.type : 'sin_definir';
+  if(s && (s.type === 'oficina' || s.type === 'remoto') && s.blocks && s.blocks.length){
+    curBlocks = s.blocks.map(function(b){ return {start: b.start, end: b.end}; });
+  } else {
+    curBlocks = [{start: 10, end: 18}];
+  }
+  var pop = document.getElementById('editor-popover');
+  pop.innerHTML = popoverBody(p);
+  pop.classList.add('open');
+  positionPopover(pop, anchorEl.getBoundingClientRect());
+}
+
+function closePopover(){
+  var pop = document.getElementById('editor-popover');
+  pop.classList.remove('open');
+  pop.innerHTML = '';
+  editingId = null; editingDay = null; editingKind = null;
+}
+
+function syncBlocksFromDom(){
+  var pop = document.getElementById('editor-popover');
+  var rows = pop.querySelectorAll('.block-row');
+  if(!rows.length){ return; }
+  var next = [];
+  rows.forEach(function(row){
+    var s = row.querySelector('.blk-start'), e = row.querySelector('.blk-end');
+    if(s && e){ next.push({start: parseFloat(s.value), end: parseFloat(e.value)}); }
+  });
+  if(next.length){ curBlocks = next; }
+}
+
+function commitEditor(){
+  var p = findPerson(editingId); if(!p){ return; }
+  var schedule;
+  if(curType === 'sin_definir'){
+    schedule = null;
+  } else if(curType === 'oficina' || curType === 'remoto'){
+    var blocks = curBlocks.map(function(b){
+      var start = b.start, end = b.end;
+      if(end <= start){ end = start + 1; }
+      return {start: start, end: end};
+    }).sort(function(a, b){ return a.start - b.start; });
+    schedule = {type: curType, blocks: blocks};
+  } else {
+    schedule = {type: curType};
+  }
+  p.schedule[editingDay] = schedule;
+  closePopover();
+  render();
+  scheduleSave();
+}
+
+function addPerson(name){
+  var id = slugify(name) + '-' + Math.random().toString(36).slice(2, 7);
+  var schedule = {};
+  DAYS.forEach(function(d){ schedule[d] = null; });
+  STATE.people.push({id: id, name: name, area: null, project: null, schedule: schedule});
+  render();
+  scheduleSave();
+}
+
+function startRename(nameEl){
+  if(readOnly){ return; }
+  var id = nameEl.getAttribute('data-id');
+  var p = findPerson(id); if(!p){ return; }
+  var input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'name-edit';
+  input.value = p.name;
+  input.maxLength = 60;
+  nameEl.replaceWith(input);
+  input.focus();
+  input.select();
+  var done = false;
+  function commit(){
+    if(done){ return; }
+    done = true;
+    var v = input.value.trim();
+    if(v && v !== p.name){ p.name = v; scheduleSave(); }
+    render();
+  }
+  input.addEventListener('blur', commit);
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ input.blur(); }
+    else if(e.key === 'Escape'){ done = true; render(); }
+  });
+}
+
+function showToast(msg, actionLabel, actionFn){
+  var t = document.getElementById('toast');
+  t.innerHTML = '<span>' + esc(msg) + '</span>' + (actionLabel ? '<button type="button" data-action="toast-action">' + esc(actionLabel) + '</button>' : '');
+  t.classList.add('show');
+  t._action = actionFn;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(hideToast, 6000);
+}
+
+function hideToast(){
+  var t = document.getElementById('toast');
+  t.classList.remove('show');
+  t._action = null;
+}
+
+function removePerson(id){
+  var idx = -1;
+  STATE.people.forEach(function(p, i){ if(p.id === id){ idx = i; } });
+  if(idx === -1){ return; }
+  lastRemoved = {person: STATE.people[idx], index: idx};
+  STATE.people.splice(idx, 1);
+  render();
+  scheduleSave();
+  showToast('Quitaste a "' + lastRemoved.person.name + '".', 'Deshacer', undoRemove);
+}
+
+function undoRemove(){
+  if(!lastRemoved){ return; }
+  var arr = STATE.people.slice();
+  arr.splice(Math.min(lastRemoved.index, arr.length), 0, lastRemoved.person);
+  STATE.people = arr;
+  lastRemoved = null;
+  render();
+  scheduleSave();
+  hideToast();
+}
+
+function wireEvents(){
+  var app = document.getElementById('app');
+  app.addEventListener('click', function(e){
+    var openEl = e.target.closest('[data-action="open"]');
+    if(openEl){ openEditor(openEl.getAttribute('data-id'), openEl.getAttribute('data-day'), openEl); return; }
+    var areaEl = e.target.closest('[data-action="open-area"]');
+    if(areaEl){ openAreaEditor(areaEl.getAttribute('data-id'), areaEl); return; }
+    var projEl = e.target.closest('[data-action="open-project"]');
+    if(projEl){ openProjectEditor(projEl.getAttribute('data-id'), projEl); return; }
+    var renameEl = e.target.closest('[data-action="rename"]');
+    if(renameEl){ startRename(renameEl); return; }
+    var rmEl = e.target.closest('[data-action="remove"]');
+    if(rmEl){ e.stopPropagation(); removePerson(rmEl.getAttribute('data-id')); return; }
+  });
+  app.addEventListener('submit', function(e){
+    var f = e.target.closest('[data-action="add-form"]');
+    if(f){
+      e.preventDefault();
+      var input = f.querySelector('input[name="newname"]');
+      var name = (input.value || '').trim();
+      if(name){ addPerson(name); input.value = ''; }
+    }
+  });
+
+  document.getElementById('editor-popover').addEventListener('click', function(e){
+    if(editingKind === 'area'){
+      var opt = e.target.closest('.areaopt');
+      if(opt){ setPersonArea(editingId, opt.getAttribute('data-area')); closePopover(); return; }
+      var addAreaBtn = e.target.closest('[data-action="add-area"]');
+      if(addAreaBtn){
+        var inputEl = document.getElementById('new-area-input');
+        var val = (inputEl && inputEl.value || '').trim();
+        if(val){
+          if(STATE.areas.indexOf(val) === -1){ STATE.areas.push(val); }
+          setPersonArea(editingId, val);
+        }
+        closePopover();
+        return;
+      }
+      if(e.target.closest('[data-action="pop-cancel"]')){ closePopover(); return; }
+      return;
+    }
+    if(editingKind === 'project'){
+      var popt = e.target.closest('.areaopt');
+      if(popt){ setPersonProject(editingId, popt.getAttribute('data-project')); closePopover(); return; }
+      var addProjBtn = e.target.closest('[data-action="add-project"]');
+      if(addProjBtn){
+        var pInput = document.getElementById('new-project-input');
+        var pval = (pInput && pInput.value || '').trim();
+        if(pval){
+          if(STATE.projects.indexOf(pval) === -1){ STATE.projects.push(pval); }
+          setPersonProject(editingId, pval);
+        }
+        closePopover();
+        return;
+      }
+      if(e.target.closest('[data-action="pop-cancel"]')){ closePopover(); return; }
+      return;
+    }
+    var tb = e.target.closest('.typebtn');
+    if(tb){
+      syncBlocksFromDom();
+      curType = tb.getAttribute('data-type');
+      if((curType === 'oficina' || curType === 'remoto') && (!curBlocks || !curBlocks.length)){ curBlocks = [{start: 10, end: 18}]; }
+      var p = findPerson(editingId);
+      if(p){ document.getElementById('editor-popover').innerHTML = popoverBody(p); }
+      return;
+    }
+    var addBtn = e.target.closest('[data-action="add-block"]');
+    if(addBtn){
+      syncBlocksFromDom();
+      var last = curBlocks[curBlocks.length - 1];
+      var nextStart = last ? Math.min(last.end, HOUR_MAX - 1) : 14;
+      var nextEnd = Math.min(nextStart + 4, HOUR_MAX);
+      curBlocks.push({start: nextStart, end: nextEnd});
+      var p2 = findPerson(editingId);
+      if(p2){ document.getElementById('editor-popover').innerHTML = popoverBody(p2); }
+      return;
+    }
+    var rmBtn = e.target.closest('[data-action="remove-block"]');
+    if(rmBtn){
+      syncBlocksFromDom();
+      var idx = parseInt(rmBtn.getAttribute('data-idx'), 10);
+      curBlocks.splice(idx, 1);
+      if(!curBlocks.length){ curBlocks = [{start: 10, end: 18}]; }
+      var p3 = findPerson(editingId);
+      if(p3){ document.getElementById('editor-popover').innerHTML = popoverBody(p3); }
+      return;
+    }
+    if(e.target.closest('[data-action="pop-save"]')){ syncBlocksFromDom(); commitEditor(); return; }
+    if(e.target.closest('[data-action="pop-cancel"]')){ closePopover(); return; }
+  });
+
+  document.addEventListener('click', function(e){
+    if(!editingId){ return; }
+    var pop = document.getElementById('editor-popover');
+    var path = e.composedPath ? e.composedPath() : [e.target];
+    for(var i = 0; i < path.length; i++){
+      var el = path[i];
+      if(el === pop){ return; }
+      if(el && el.getAttribute && el.getAttribute('data-popover-trigger') === '1'){ return; }
+    }
+    closePopover();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && editingId){ closePopover(); }
+  });
+
+  document.getElementById('toast').addEventListener('click', function(e){
+    if(e.target.closest('[data-action="toast-action"]')){
+      var t = document.getElementById('toast');
+      if(t._action){ t._action(); }
+    }
+  });
+
+  var searchEl = document.getElementById('search-input');
+  if(searchEl){
+    searchEl.addEventListener('input', function(){ searchTerm = searchEl.value; render(); });
+  }
+  var machinesEl = document.getElementById('machines-input');
+  if(machinesEl){
+    machinesEl.addEventListener('input', function(){
+      var v = parseInt(machinesEl.value, 10);
+      STATE.machines = isNaN(v) ? 0 : Math.max(0, v);
+      render();
+      scheduleSave();
+    });
+  }
+}
+
+function boot(){
+  wireEvents();
+  render();
+  if(window.claude && typeof window.claude.use === 'function'){
+    window.claude.use('artifact').then(function(api){
+      artifactApi = api;
+      if(!api){ applyReadOnly(); }
+    }).catch(function(){ applyReadOnly(); });
+  } else {
+    applyReadOnly();
+  }
+}
+
+boot();
+</script>
+</body>
+</html>
